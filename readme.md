@@ -1,42 +1,42 @@
-SpendSense API
+#SpendSense API
 
 A production-ready backend API for personal expense tracking with authentication, analytics, and async email verification.
 
 This project is API-only (no frontend).
 
-Features
+##Features
 
-JWT authentication (access + refresh)
+-JWT authentication (access + refresh)
 
-User registration with OTP email verification
+-User registration with OTP email verification
 
-Category & expense management (CRUD)
+-Category & expense management (CRUD)
 
-Monthly, daily & category-wise analytics
+-Monthly, daily & category-wise analytics
 
-Budget management
+-Budget management
 
-Async email sending using Celery + Redis
+-Async email sending using Celery + Redis
 
-Secure environment-based configuration
+-Secure environment-based configuration
 
-Swagger API documentation
+-Swagger API documentation
 
-Tech Stack
+##Tech Stack
 
-Backend: Django, Django REST Framework
+-Backend: Django, Django REST Framework
 
-Auth: Simple JWT
+-Auth: Simple JWT
 
-Async Tasks: Celery + Redis
+-Async Tasks: Celery + Redis
 
-Database: MySQL
+-Database: MySQL
 
-Docs: Swagger (drf-yasg)
+-Docs: Swagger (drf-yasg)
 
-Deployment: Render
+-Deployment: Render
 
-API Structure
+##API Structure
 
 /api/accounts/ → registration & OTP verification
 
