@@ -1,12 +1,12 @@
-#SpendSense API
+# SpendSense API
 
 A production-ready backend API for personal expense tracking with authentication, analytics, and async email verification.
 
 This project is API-only (no frontend).
 
-##Features
+## Features
 
--JWT authentication (access + refresh)
+- JWT authentication (access + refresh)
 
 -User registration with OTP email verification
 
