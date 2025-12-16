@@ -16,7 +16,7 @@ This project is API-only (no frontend).
 
 - Budget management
 
--Async email sending using Celery + Redis
+- Async email sending using Celery + Redis
 
 - Secure environment-based configuration
 
