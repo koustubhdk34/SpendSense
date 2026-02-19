@@ -1,127 +1,156 @@
 # SpendSense API
 
-A production-ready backend API for personal expense tracking with authentication, analytics, and async email verification.
+Personal expense tracking application with Django REST Framework backend and a minimal React frontend.
 
-This project is API-only (no frontend).
+---
 
 ## Features
 
-- JWT authentication (access + refresh)
-
+### Backend
+- JWT authentication (access + refresh tokens)
 - User registration with OTP email verification
-
-- Category & expense management (CRUD)
-
-- Monthly, daily & category-wise analytics
-
+- Category management (CRUD)
+- Expense management (CRUD)
 - Budget management
-
+- Monthly, daily, and category-wise analytics
 - Async email sending using Celery + Redis
-
-- Secure environment-based configuration
-
+- Environment-based configuration
 - Swagger API documentation
+
+### Frontend
+- React application for user authentication and dashboard
+- Protected routes
+- Category and expense management UI
+- Axios integration with JWT token handling
+
+---
 
 ## Tech Stack
 
-- Backend: Django, Django REST Framework
+### Backend
+- Django
+- Django REST Framework
+- Simple JWT
+- MySQL
+- Celery
+- Redis
+- drf-yasg (Swagger)
 
-- Auth: Simple JWT
+### Frontend
+- React (Vite)
+- React Router
+- Axios
+- Context API
 
-- Async Tasks: Celery + Redis
-
-- Database: MySQL
-
-- Docs: Swagger (drf-yasg)
-
-- Deployment: Render
+---
 
 ## API Structure
 
-- /api/accounts/ → registration & OTP verification
+- `/api/accounts/` → registration & OTP verification
+- `/api/auth/` → JWT token & refresh
+- `/api/categories/` → expense categories
+- `/api/expenses/` → expense CRUD
+- `/api/budgets/` → budget CRUD
+- `/api/analytics/` → aggregated insights
+- `/swagger/` → API documentation
+- `/` → health response
 
-- /api/auth/ → JWT token & refresh
-
-- /api/categories/ → expense categories
-
-- /api/expenses/ → expense CRUD
-
-- /api/budgets/ → budget CRUD
-
-- /api/analytics/ → aggregated insights
-
-- /swagger/ → API documentation
-
-- Root / returns a simple health response.
+---
 
 ## Environment Setup
 
+### Prerequisites
 - Python 3.10+
+- Node.js 16+
+- MySQL
+- Redis
 
-- git clone <repo-url>
-- cd spendsense
-- python -m venv venv
-- source venv/bin/activate   # Windows: venv\Scripts\activate
-- pip install -r requirements.txt
+### 1. Clone Repository
 
+```bash
+git clone <repo-url>
+cd spendsense
+```
 
-## Create .env from the example:
+### 2. Create Virtual Environment
 
-- cp .env.example .env
+```bash
+python -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+```
 
+### 3. Install Backend Dependencies
 
-.env is intentionally excluded.
-Create your own from .env.example.
+```bash
+pip install -r requirements.txt
+```
 
-## Database
+### 4. Configure Environment Variables
 
-MySQL must be running.
+Create `.env` from example:
 
+```bash
+cp .env.example .env
+```
+
+`.env` is excluded from version control.
+
+---
+
+## Database Setup
+
+Ensure MySQL is running, then:
+
+```bash
 python manage.py migrate
 python manage.py createsuperuser
+```
 
-Running Locally
-Start Redis:
+---
+
+## Running Locally
+
+### Start Redis
+
+```bash
 redis-server
+```
 
-Start Django:
+### Start Django Server
+
+```bash
 python manage.py runserver
+```
 
-Start Celery worker:
+Backend runs at: http://127.0.0.1:8000
+
+### Start Celery Worker
+
+```bash
 celery -A core worker -l info --pool=solo
+```
 
-(Email OTPs print to console in development.)
+### Start Frontend
 
-## API Docs
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-### Swagger UI:
+Frontend runs at: http://localhost:5173
 
-- http://127.0.0.1:8000/swagger/
+---
 
-## Deployment (Render)
+## API Documentation
 
-- Environment variables are configured in Render dashboard
+Swagger UI: http://127.0.0.1:8000/swagger/
 
-- No .env file is committed or used in production
+---
 
-- Redis is used as the Celery broker
+## Notes
 
-### Separate services:
-
-- Web (Django)
-
-- Worker (Celery)
-
-## Design Notes
-
-- API-only backend by design
-
-- Celery is used to avoid blocking requests during email delivery
-
-- Analytics are calculated using database aggregation queries
-
-- JWT ensures stateless authentication
-
-- Settings are environment-driven for safe deployment
-
- 
+- Celery is used for asynchronous email delivery.
+- Analytics are calculated using database aggregation queries.
+- JWT provides stateless authentication.
+- All sensitive settings are managed through environment variables.
