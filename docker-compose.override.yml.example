@@ -1,0 +1,15 @@
+# Copy this file to docker-compose.override.yml for local development overrides
+# docker-compose.override.yml is gitignored for security
+
+version: "3.9"
+
+services:
+  backend:
+    environment:
+      - DEBUG=True
+    volumes:
+      - ./backend:/app
+
+  db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=your-local-root-password

@@ -1,156 +1,134 @@
-# SpendSense API
+SpendSense API
 
-Personal expense tracking application with Django REST Framework backend and a minimal React frontend.
+A production-ready backend API for personal expense tracking with authentication, analytics, and async email verification.
 
----
+This project is API-only (no frontend).
 
-## Features
+Features
 
-### Backend
-- JWT authentication (access + refresh tokens)
-- User registration with OTP email verification
-- Category management (CRUD)
-- Expense management (CRUD)
-- Budget management
-- Monthly, daily, and category-wise analytics
-- Async email sending using Celery + Redis
-- Environment-based configuration
-- Swagger API documentation
+JWT authentication (access + refresh)
 
-### Frontend
-- React application for user authentication and dashboard
-- Protected routes
-- Category and expense management UI
-- Axios integration with JWT token handling
+User registration with OTP email verification
 
----
+Category & expense management (CRUD)
 
-## Tech Stack
+Monthly, daily & category-wise analytics
 
-### Backend
-- Django
-- Django REST Framework
-- Simple JWT
-- MySQL
-- Celery
-- Redis
-- drf-yasg (Swagger)
+Budget management
 
-### Frontend
-- React (Vite)
-- React Router
-- Axios
-- Context API
+Async email sending using Celery + Redis
 
----
+Secure environment-based configuration
 
-## API Structure
+Swagger API documentation
 
-- `/api/accounts/` → registration & OTP verification
-- `/api/auth/` → JWT token & refresh
-- `/api/categories/` → expense categories
-- `/api/expenses/` → expense CRUD
-- `/api/budgets/` → budget CRUD
-- `/api/analytics/` → aggregated insights
-- `/swagger/` → API documentation
-- `/` → health response
+Tech Stack
 
----
+Backend: Django, Django REST Framework
 
-## Environment Setup
+Auth: Simple JWT
 
-### Prerequisites
-- Python 3.10+
-- Node.js 16+
-- MySQL
-- Redis
+Async Tasks: Celery + Redis
 
-### 1. Clone Repository
+Database: MySQL
 
-```bash
+Docs: Swagger (drf-yasg)
+
+Deployment: Render
+
+API Structure
+
+/api/accounts/ → registration & OTP verification
+
+/api/auth/ → JWT token & refresh
+
+/api/categories/ → expense categories
+
+/api/expenses/ → expense CRUD
+
+/api/budgets/ → budget CRUD
+
+/api/analytics/ → aggregated insights
+
+/swagger/ → API documentation
+
+Root / returns a simple health response.
+
+Environment Setup
+
+Python 3.10+
+
 git clone <repo-url>
 cd spendsense
-```
-
-### 2. Create Virtual Environment
-
-```bash
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
-```
-
-### 3. Install Backend Dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-### 4. Configure Environment Variables
 
-Create `.env` from example:
+Create .env from the example:
 
-```bash
 cp .env.example .env
-```
 
-`.env` is excluded from version control.
 
----
+.env is intentionally excluded.
+Create your own from .env.example.
 
-## Database Setup
+Database
 
-Ensure MySQL is running, then:
+MySQL must be running.
 
-```bash
 python manage.py migrate
 python manage.py createsuperuser
-```
 
----
+Running Locally
 
-## Running Locally
+Start Redis:
 
-### Start Redis
-
-```bash
 redis-server
-```
 
-### Start Django Server
 
-```bash
+Start Django:
+
 python manage.py runserver
-```
 
-Backend runs at: http://127.0.0.1:8000
 
-### Start Celery Worker
+Start Celery worker:
 
-```bash
 celery -A core worker -l info --pool=solo
-```
 
-### Start Frontend
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+(Email OTPs print to console in development.)
 
-Frontend runs at: http://localhost:5173
+API Docs
 
----
+Swagger UI:
 
-## API Documentation
+http://127.0.0.1:8000/swagger/
 
-Swagger UI: http://127.0.0.1:8000/swagger/
+Deployment (Render)
 
----
+Environment variables are configured in Render dashboard
 
-## Notes
+No .env file is committed or used in production
 
-- Celery is used for asynchronous email delivery.
-- Analytics are calculated using database aggregation queries.
-- JWT provides stateless authentication.
-- All sensitive settings are managed through environment variables.
+Redis is used as the Celery broker
+
+Separate services:
+
+Web (Django)
+
+Worker (Celery)
+
+Design Notes
+
+API-only backend by design
+
+Celery is used to avoid blocking requests during email delivery
+
+Analytics are calculated using database aggregation queries
+
+JWT ensures stateless authentication
+
+Settings are environment-driven for safe deployment
+
+ 

@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - /app/venv
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+      "
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://localhost:8000
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-expense_db}
+      MYSQL_USER: ${DB_USER:-expense_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-expense_pass}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: ./backend
+    command: celery -A core worker -l info
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+
+volumes:
+  mysql_data:

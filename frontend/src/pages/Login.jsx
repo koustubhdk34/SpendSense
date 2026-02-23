@@ -31,20 +31,19 @@ export default function Login() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '1rem'
+      background: '#f8f9fa',
+      padding: '1.5rem'
     }}>
       <div className="card fade-in" style={{
         maxWidth: '420px',
         width: '100%',
         padding: '2.5rem',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)'
       }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>💰</h1>
-          <h2 style={{ marginBottom: '0.5rem' }}>Welcome Back</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-            Sign in to manage your expenses
+          <h2 style={{ marginBottom: '0.5rem', color: '#5a67d8' }}>SpendSense</h2>
+          <p style={{ color: '#718096', fontSize: '0.95rem' }}>
+            Sign in to your account
           </p>
         </div>
 
@@ -52,7 +51,7 @@ export default function Login() {
           <div className="form-group">
             <label className="form-label">Username</label>
             <input
-              placeholder="Enter your username"
+              placeholder="Enter username"
               value={form.username}
               onChange={(e) => setForm({ ...form, username: e.target.value })}
               required
@@ -64,7 +63,7 @@ export default function Login() {
             <label className="form-label">Password</label>
             <input
               type="password"
-              placeholder="Enter your password"
+              placeholder="Enter password"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               required
@@ -80,7 +79,7 @@ export default function Login() {
           <button 
             type="submit" 
             disabled={loading}
-            style={{ width: '100%', padding: '0.75rem', fontSize: '1rem' }}
+            style={{ width: '100%', padding: '0.75rem' }}
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -89,11 +88,11 @@ export default function Login() {
         <div style={{
           marginTop: '1.5rem',
           textAlign: 'center',
-          fontSize: '0.875rem',
-          color: 'var(--text-secondary)'
+          fontSize: '0.9rem',
+          color: '#718096'
         }}>
           Don't have an account?{" "}
-          <Link to="/register" style={{ fontWeight: '600' }}>
+          <Link to="/register">
             Create one
           </Link>
         </div>

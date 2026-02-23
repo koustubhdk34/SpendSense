@@ -30,26 +30,25 @@ export default function VerifyOTP() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '1rem'
+      background: '#f8f9fa',
+      padding: '1.5rem'
     }}>
       <div className="card fade-in" style={{
         maxWidth: '420px',
         width: '100%',
         padding: '2.5rem',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)'
       }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📧</h1>
-          <h2 style={{ marginBottom: '0.5rem' }}>Verify Your Email</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-            Enter the OTP code sent to your email
+          <h2 style={{ marginBottom: '0.5rem', color: '#5a67d8' }}>Verify Email</h2>
+          <p style={{ color: '#718096', fontSize: '0.95rem' }}>
+            Enter the OTP sent to your email
           </p>
         </div>
 
         {success ? (
           <div className="alert alert-success" style={{ textAlign: 'center' }}>
-            ✅ Email verified successfully! Redirecting to login...
+            Email verified! Redirecting to login...
           </div>
         ) : (
           <form onSubmit={submit}>
@@ -73,7 +72,7 @@ export default function VerifyOTP() {
                 onChange={(e) => setForm({ ...form, code: e.target.value })}
                 required
                 maxLength={6}
-                style={{ letterSpacing: '0.5em', fontSize: '1.25rem', textAlign: 'center' }}
+                style={{ letterSpacing: '0.3em', fontSize: '1.1rem', textAlign: 'center' }}
               />
             </div>
 
@@ -86,7 +85,7 @@ export default function VerifyOTP() {
             <button 
               type="submit" 
               disabled={loading}
-              style={{ width: '100%', padding: '0.75rem', fontSize: '1rem' }}
+              style={{ width: '100%', padding: '0.75rem' }}
             >
               {loading ? "Verifying..." : "Verify Email"}
             </button>
@@ -96,11 +95,11 @@ export default function VerifyOTP() {
         <div style={{
           marginTop: '1.5rem',
           textAlign: 'center',
-          fontSize: '0.875rem',
-          color: 'var(--text-secondary)'
+          fontSize: '0.9rem',
+          color: '#718096'
         }}>
-          <Link to="/login" style={{ fontWeight: '600' }}>
-            ← Back to Login
+          <Link to="/login">
+            Back to Login
           </Link>
         </div>
       </div>

@@ -32,20 +32,19 @@ export default function Register() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '1rem'
+      background: '#f8f9fa',
+      padding: '1.5rem'
     }}>
       <div className="card fade-in" style={{
         maxWidth: '420px',
         width: '100%',
         padding: '2.5rem',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)'
       }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🚀</h1>
-          <h2 style={{ marginBottom: '0.5rem' }}>Create Account</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-            Start tracking your expenses today
+          <h2 style={{ marginBottom: '0.5rem', color: '#5a67d8' }}>Create Account</h2>
+          <p style={{ color: '#718096', fontSize: '0.95rem' }}>
+            Start tracking your expenses
           </p>
         </div>
 
@@ -76,7 +75,7 @@ export default function Register() {
             <label className="form-label">Password</label>
             <input
               type="password"
-              placeholder="Create a strong password"
+              placeholder="Create a password"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               required
@@ -93,7 +92,7 @@ export default function Register() {
           <button 
             type="submit" 
             disabled={loading}
-            style={{ width: '100%', padding: '0.75rem', fontSize: '1rem' }}
+            style={{ width: '100%', padding: '0.75rem' }}
           >
             {loading ? "Creating account..." : "Create Account"}
           </button>
@@ -102,11 +101,11 @@ export default function Register() {
         <div style={{
           marginTop: '1.5rem',
           textAlign: 'center',
-          fontSize: '0.875rem',
-          color: 'var(--text-secondary)'
+          fontSize: '0.9rem',
+          color: '#718096'
         }}>
           Already have an account?{" "}
-          <Link to="/login" style={{ fontWeight: '600' }}>
+          <Link to="/login">
             Sign in
           </Link>
         </div>

@@ -1,0 +1,12 @@
+Django>=4.2
+djangorestframework
+djangorestframework-simplejwt
+mysqlclient
+django-filter
+drf-yasg
+python-dotenv
+gunicorn
+celery[redis]
+redis
+django-cors-headers
+python-multipart
