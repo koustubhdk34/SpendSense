@@ -6,7 +6,7 @@ Personal expense tracking application with Django REST Framework backend and a m
 
 ## Demo
 
-- Live Project demo: [https://drive.google.com/file/d/1XaETIr6R5hK38w_hNPW4c2idIO8A6fWW/view?usp=sharing](#)  
+- Live Project demo: [Click here to view](https://drive.google.com/file/d/1XaETIr6R5hK38w_hNPW4c2idIO8A6fWW/view?usp=sharing)
 
 
 ---
