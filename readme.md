@@ -43,8 +43,7 @@ Personal expense tracking application with Django REST Framework backend and a m
 ### Expense Management
 ![Expense Management](screenshots/Expense.png)
 
-### Swagger API Overview
-![Swagger API](screenshots/swagger.png)
+
 
 ## Tech Stack
 
