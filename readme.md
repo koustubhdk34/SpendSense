@@ -174,3 +174,4 @@ Swagger UI: http://127.0.0.1:8000/swagger/
 - Analytics are calculated using database aggregation queries.
 - JWT provides stateless authentication.
 - All sensitive settings are managed through environment variables.
+- Environment variables are used to manage sensitive credentials. A `.env.example` template is provided while keeping secrets out of version control.
